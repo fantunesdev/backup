@@ -1,0 +1,22 @@
+<div class="d-flex nav-item ">
+    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <img class="profile-icon align-middle" src="{{ url_for('static', filename='img/profile.jpg') }}" alt="">
+                <strong>Fernando</strong>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end dropdown-menu-dark mx-auto text-center" aria-labelledby="navbarDropdown">
+                <div class="profile-menu"></div>
+                <li><img class="photo" src="{{ url_for('static', filename='img/profile.jpg') }}" alt=""></li>
+                <li><h4>Fernando Antunes</h4></li>
+                <li><spam>fernando@mail.com</spam></li>
+                <li><spam>Membro desde</spam></li>
+                <li><hr class="dropdown-divider"></li>
+                <li class="d-flex justify-content-evenly">
+                    <a class="btn btn-dark" href="#">Perfil</a>
+                    <a class="btn btn-dark" href="#">Logout</a>
+                </li>
+            </ul>
+        </li>
+    </ul>
+</div>

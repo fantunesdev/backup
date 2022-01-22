@@ -1,0 +1,30 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-red">
+    <div class="container-fluid">
+        <!-- Início Brand -->
+        <a class="navbar-brand" href="#">Backup</a>
+        <!-- Fim Brand -->
+
+        <!-- Início Botão Mobile -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <!-- Fim Botão Mobile -->
+
+        <!-- Início do Menu -->
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="{{ url_for('listar_hoje') }}">Sincronização</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="#">Semanal</a>
+                </li>
+            </ul>
+
+            <!-- Início do botão de perfil -->
+<!--            {% include 'frames/_perfil.html' %}-->
+            <!-- Fim do botão de perfil -->
+        </div>
+    </div>
+    <!-- Fim do Menu -->
+</nav>

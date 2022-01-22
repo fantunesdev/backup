@@ -1,0 +1,34 @@
+{% extends 'index.html' %}
+
+{% block conteudo %}
+<div class="my-box my-box-primary">
+    <div class="my-box-header">
+        <h5 class="box-title">Sincronização</h5>
+    </div>
+    <div class="my-box-body">
+        <table class="table-dark table-striped table">
+            <thead>
+                <tr>
+                    {% for coluna in matriz[0] %}
+                        <th class="text-center" style="min-width:50px">{{ coluna }}</th>
+                    {% endfor %}
+                </tr>
+            </thead>
+            <tbody>
+                {% for linha in matriz %}
+                    <tr>
+                        {% for coluna in matriz[loop.index] %}
+                            <td class="text-center">{{ coluna }}</td>
+                        {% endfor %}
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <div class="my-box-footer">
+        <span>Total de {{ total }} backups realizados em {{ data }}.</span>
+    </div>
+</div>
+
+
+{% endblock %}
