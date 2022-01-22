@@ -8,3 +8,7 @@ def listar_relatorios():
 
 def listar_dia(dia):
     return Relatorio.query.filter(Relatorio.data.like(f'{dia}%')).order_by(Relatorio.id.desc())
+
+
+def listar_relatorio_id(relatorio_id):
+    return Relatorio.query.filter_by(id=relatorio_id).first()

@@ -23,3 +23,8 @@ def listar_dia(dia):
     matriz = relatorio_repositorio.montar_templatetags(relatorios)
     total = len(matriz) * (len(matriz[0]) - 1)
     return render_template('relatorio/sincronizacao.html', matriz=matriz, total=total, data=data)
+
+@app.route('/relatorios/<int:relatorio_id>')
+def listar_relatorio_id(relatorio_id):
+    relatorio = relatorio_service.listar_relatorio_id(relatorio_id)
+    return render_template('relatorio/expandir.html', relatorio=relatorio)

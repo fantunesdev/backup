@@ -1,0 +1,21 @@
+{% extends 'index.html' %}
+
+{% block conteudo %}
+<div class="my-box my-box-primary">
+    <div class="my-box-header">
+        <h5 class="box-title">Sincronização - {{ data }}</h5>
+    </div>
+    <div class="my-box-body">
+        <p>Ação: <strong>{{ relatorio.acao.descricao }}</strong></p>
+        <p>Status: <strong>{{ relatorio.status }}</strong></p>
+        <p>Frequência <strong>{{ relatorio.frequencia.descricao }}</strong></p>
+        <p>Data: <strong>{{ relatorio.data }}</strong></p>
+        <p>Log: <br><br>{{ relatorio.detalhamento|safe }}</p>
+    </div>
+    <div class="my-box-footer">
+        <span>Fim</span>
+    </div>
+</div>
+
+
+{% endblock %}
