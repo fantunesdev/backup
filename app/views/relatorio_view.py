@@ -11,8 +11,11 @@ def listar_hoje():
     data = hoje.strftime('%d/%m/%Y')
     relatorios = relatorio_service.listar_dia(hoje)
     matriz = relatorio_repositorio.montar_templatetags(relatorios)
-    total = len(matriz) * (len(matriz[0]) - 1)
-    return render_template('relatorio/sincronizacao.html', matriz=matriz, total=total, data=data)
+    sucessos_falhas = relatorio_repositorio.retorna_numero_sucessos_falhas(relatorios)
+    return render_template('relatorio/sincronizacao.html', matriz=matriz,
+                                                           sucessos=sucessos_falhas['sucessos'],
+                                                           falhas=sucessos_falhas['falhas'],
+                                                           data=data)
 
 
 @app.route('/sincronizacao/<string:dia>')
@@ -21,8 +24,11 @@ def listar_dia(dia):
     data = dia.strftime('%d/%m/%Y')
     relatorios = relatorio_service.listar_dia(dia)
     matriz = relatorio_repositorio.montar_templatetags(relatorios)
-    total = len(matriz) * (len(matriz[0]) - 1)
-    return render_template('relatorio/sincronizacao.html', matriz=matriz, total=total, data=data)
+    sucessos_falhas = relatorio_repositorio.retorna_numero_sucessos_falhas(relatorios)
+    return render_template('relatorio/sincronizacao.html', matriz=matriz,
+                                                           sucessos=sucessos_falhas['sucessos'],
+                                                           falhas=sucessos_falhas['falhas'],
+                                                           data=data)
 
 @app.route('/relatorios/<int:relatorio_id>')
 def listar_relatorio_id(relatorio_id):

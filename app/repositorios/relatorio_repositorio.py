@@ -31,7 +31,7 @@ def montar_templatetags(relatorios):
                 continue
             acao = relatorio.acao.descricao
             if acao in linha:
-                matriz[i].append(relatorio.status)
+                matriz[i].append(relatorio)
 
     return matriz
 
@@ -60,6 +60,18 @@ def retornar_datas(relatorios):
         if relatorio.data not in datas:
             datas.append(relatorio.data)
     return datas
+
+
+def retorna_numero_sucessos_falhas(relatorios):
+    contador_sucesso = 0
+    contador_falha = 0
+    for relatorio in relatorios:
+        if relatorio.status:
+            contador_sucesso += 1
+        else:
+            contador_falha += 1
+    return {'sucessos': contador_sucesso,
+            'falhas': contador_falha}
 
 
 def slugify(string):

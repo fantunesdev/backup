@@ -29,3 +29,10 @@ class Relatorio(db.Model):
 
     acao = relationship('Acao')
     frequencia = relationship('Frequencia')
+
+    @property
+    def estatus(self):
+        if self.status:
+            return 'Ok'
+        else:
+            return 'Falhou'

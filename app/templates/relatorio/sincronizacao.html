@@ -18,7 +18,17 @@
                 {% for linha in matriz %}
                     <tr>
                         {% for coluna in matriz[loop.index] %}
-                            <td class="text-center">{{ coluna }}</td>
+                            {% if loop.index == 1 %}
+                                <td class="text-center">{{ coluna }}</td>
+                            {% else %}
+
+                                    <td class="text-center">
+                                        <a href="{{ url_for('listar_relatorio_id', relatorio_id=coluna.id) }}">
+                                            {{ coluna.estatus }}
+                                        </a>
+                                    </td>
+                            {% endif %}
+
                         {% endfor %}
                     </tr>
                 {% endfor %}
@@ -26,7 +36,7 @@
         </table>
     </div>
     <div class="my-box-footer">
-        <span>Total de {{ total }} backups realizados em {{ data }}.</span>
+        <span>Total de {{ sucessos }} backups realizados com sucesso e {{ falhas }} com falhas em {{ data }}.</span>
     </div>
 </div>
 
