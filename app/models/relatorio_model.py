@@ -36,3 +36,7 @@ class Relatorio(db.Model):
             return 'Ok'
         else:
             return 'Falhou'
+
+    @property
+    def data_pt_br(self):
+        return self.data.strftime('%d/%m/%Y às %H:%M:%S')
