@@ -35,7 +35,7 @@ def listar_dia(dia):
 @app.route('/semana/<int:semana>')
 def listar_semana(semana):
     if not semana:
-        semana = datetime.date.today().isocalendar()[1] + 1
+        semana = datetime.date.today().isocalendar()[1]
     relatorios = relatorio_service.listar_semana(semana)
     sucessos_falhas = relatorio_repositorio.retorna_numero_sucessos_falhas(relatorios)
     return render_template('relatorio/semana.html', relatorios=relatorios,
