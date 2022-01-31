@@ -30,6 +30,20 @@ def listar_dia(dia):
                                                            falhas=sucessos_falhas['falhas'],
                                                            data=data)
 
+
+@app.route('/semana', defaults={'semana': None})
+@app.route('/semana/<int:semana>')
+def listar_semana(semana):
+    if not semana:
+        semana = datetime.date.today().isocalendar()[1] + 1
+    relatorios = relatorio_service.listar_semana(semana)
+    sucessos_falhas = relatorio_repositorio.retorna_numero_sucessos_falhas(relatorios)
+    return render_template('relatorio/semana.html', relatorios=relatorios,
+                                                    sucessos=sucessos_falhas['sucessos'],
+                                                    falhas=sucessos_falhas['falhas'],
+                                                    semana=semana)
+
+
 @app.route('/relatorios/<int:relatorio_id>')
 def listar_relatorio_id(relatorio_id):
     relatorio = relatorio_service.listar_relatorio_id(relatorio_id)

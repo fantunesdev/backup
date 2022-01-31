@@ -23,7 +23,12 @@
                             {% else %}
 
                                     <td class="text-center">
-                                        <a href="{{ url_for('listar_relatorio_id', relatorio_id=coluna.id) }}">
+                                        <a {% if coluna.status %}
+                                                class="link-light"
+                                           {% else %}
+                                                class="link-danger"
+                                           {% endif %}
+                                           href="{{ url_for('listar_relatorio_id', relatorio_id=coluna.id) }}">
                                             {{ coluna.estatus }}
                                         </a>
                                     </td>
