@@ -1,4 +1,4 @@
-from secure import *
+from my_conf import *
 
 DEBUG = True
 
