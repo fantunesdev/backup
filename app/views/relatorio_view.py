@@ -6,6 +6,7 @@ from app.services import relatorio_service
 
 
 @app.route('/sincronizacao')
+@app.route('/')
 def listar_hoje():
     hoje = datetime.date.today()
     data = hoje.strftime('%d/%m/%Y')
