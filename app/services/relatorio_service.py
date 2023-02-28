@@ -1,7 +1,7 @@
 from sqlalchemy import extract
 
-from app.models import relatorio_model
-from app.models.relatorio_model import Relatorio
+from app.models_apagar import relatorio_model
+from app.models_apagar.relatorio_model import Relatorio
 
 
 def listar_relatorios():

@@ -1,0 +1,36 @@
+{% extends 'index.html' %}
+
+{% block conteudo %}
+<div class="my-box my-box-primary">
+    <div class="my-box-header">
+        <h5 class="box-title">Backups</h5>
+    </div>
+    <div class="my-box-body">
+        <table class="table-dark table-striped table">
+            <thead>
+                <tr>
+                    <th class="text-center" style="min-width:50px">Descricao</th>
+                    <th class="text-center" style="min-width:50px">Frequência</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for backup in backups %}
+                    <tr>
+                        <td class="text-center">
+                            <a class="link-light" href="{{ url_for('get_backup_id', backup_id=backup.id) }}">{{ backup.description }}</a>
+                        </td>
+                        <td class="text-center">
+                            {{ backup.frequency_obj }}
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <div class="my-box-footer">
+        <span></span>
+    </div>
+</div>
+
+
+{% endblock %}

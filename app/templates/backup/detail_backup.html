@@ -1,0 +1,24 @@
+{% extends 'index.html' %}
+
+{% block conteudo %}
+<div class="my-box my-box-primary">
+    <div class="my-box-header">
+        <h5 class="box-title">{{ backup }}</h5>
+    </div>
+    <div class="my-box-body">
+        <p>ID: <strong>{{ backup.id }}</strong></p>
+        <p>Descrição: <strong>{{ backup.description }}</strong></p>
+        <p>Origem: <strong>{{ backup.source }}</strong></p>
+        <p>Destino: <strong>{{ backup.target }}</strong></p>
+        <p>Programa: <strong>{{ backup.program }}</strong></p>
+        <p>Opções: <strong>{{ backup.options }}</strong></p>
+        <p>Comando: {{ backup.program }} {{ backup.options }} {{ backup.source }} {{ backup.target }}</p>
+        <p>Frequência: <strong>{{ backup.frequency }}</strong></p>
+    </div>
+    <div class="my-box-footer">
+        <span></span>
+    </div>
+</div>
+
+
+{% endblock %}
