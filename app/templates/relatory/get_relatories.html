@@ -1,0 +1,45 @@
+{% extends 'index.html' %}
+
+{% block conteudo %}
+<div class="my-box my-box-primary">
+    <div class="my-box-header">
+        <h5 class="box-title">Semanal</h5>
+    </div>
+    <div class="my-box-body">
+        <table class="table-dark table-striped table">
+            <thead>
+                <tr>
+                    <th class="text-center" style="min-width:50px">Backup</th>
+                    <th class="text-center" style="min-width:50px">Status</th>
+                    <th class="text-center" style="min-width:50px">Data</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for relatory in relatories %}
+                    <tr>
+                        <td class="text-center">
+                                <a class="link-light" href="{{ url_for('get_relatory_id', relatory_id=relatory.id) }}">{{ relatory.backup_obj }}</a>
+                        </td>
+                        <td class="text-center">
+                            <a {% if relatory.status %}
+                                    class="link-light"
+                               {% else %}
+                                    class="link-danger"
+                               {% endif %}
+                               href="{{ url_for('get_relatory_id', relatory_id=relatory.id) }}">{{ relatory.status }}</a>
+                        </td>
+                        <td class="text-center">
+                                <a class="link-light" href="{{ url_for('get_relatory_id', relatory_id=relatory.id) }}">{{ relatory.date }}</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <div class="my-box-footer">
+        <span>Total de {{ sucessos }} backups realizados com sucesso e {{ falhas }} com falhas na semana {{ semana }}.</span>
+    </div>
+</div>
+
+
+{% endblock %}

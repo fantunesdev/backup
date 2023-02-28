@@ -1,0 +1,18 @@
+{% extends 'index.html' %}
+
+{% block conteudo %}
+<div class="my-box my-box-primary">
+    <div class="my-box-header">
+        <h5 class="box-title">{{ backup }}</h5>
+    </div>
+    <div class="my-box-body">
+        <p>ID: <strong>{{ frequency.id }}</strong></p>
+        <p>Descrição: <strong>{{ frequency.description }}</strong></p>
+    </div>
+    <div class="my-box-footer">
+        <span></span>
+    </div>
+</div>
+
+
+{% endblock %}

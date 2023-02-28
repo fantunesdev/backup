@@ -5,7 +5,7 @@ from app.repositorios import relatorio_repositorio
 from app.services import relatorio_service
 
 
-@app.route('/sincronizacao')
+# @app.route('/sincronizacao')
 @app.route('/')
 def listar_hoje():
     hoje = datetime.date.today()

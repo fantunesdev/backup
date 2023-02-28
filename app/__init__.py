@@ -5,5 +5,6 @@ app = Flask(__name__)
 app.config.from_object('config')
 db = SQLAlchemy(app)
 
-from .views import relatorio_view
 from .views import backup_view
+from .views import frequency_view
+from .views import relatory_view

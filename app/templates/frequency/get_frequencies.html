@@ -1,0 +1,36 @@
+{% extends 'index.html' %}
+
+{% block conteudo %}
+<div class="my-box my-box-primary">
+    <div class="my-box-header">
+        <h5 class="box-title">Frequências</h5>
+    </div>
+    <div class="my-box-body">
+        <table class="table-dark table-striped table">
+            <thead>
+                <tr>
+                    <th class="text-center" style="min-width:50px">Descricao</th>
+                    <th class="text-center" style="min-width:50px">Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for frequency in frequencies %}
+                    <tr>
+                        <td class="text-center">
+                            <a class="link-light" href="{{ url_for('get_frequency_id', frequency_id=frequency.id) }}">{{ frequency.description }}</a>
+                        </td>
+                        <td class="text-center">
+                            Editar - Excluir
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <div class="my-box-footer">
+        <span></span>
+    </div>
+</div>
+
+
+{% endblock %}

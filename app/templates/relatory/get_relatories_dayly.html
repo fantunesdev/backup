@@ -1,35 +1,40 @@
 {% extends 'index.html' %}
 
 {% block conteudo %}
+    <br>
+    <div class="text-center">
+        <a class="link-light" href="{{ url_for('get_relatory_by_day', day=last_day) }}">Dia anterior</a>
+        <a class="link-light" href="{{ url_for('get_relatory_by_day', day=next_day) }}">Próximo dia</a>
+    </div>
 <div class="my-box my-box-primary">
     <div class="my-box-header">
-        <h5 class="box-title">Sincronização - {{ data }}</h5>
+        <h5 class="box-title">Sincronização - {{ date }}</h5>
     </div>
     <div class="my-box-body">
         <table class="table-dark table-striped table">
             <thead>
                 <tr>
-                    {% for coluna in matriz[0] %}
-                        <th class="text-center" style="min-width:50px">{{ coluna }}</th>
+                    {% for column in matrix[0] %}
+                        <th class="text-center" style="min-width:50px">{{ column }}</th>
                     {% endfor %}
                 </tr>
             </thead>
             <tbody>
-                {% for linha in matriz %}
+                {% for row in matrix %}
                     <tr>
-                        {% for coluna in matriz[loop.index] %}
+                        {% for column in matrix[loop.index] %}
                             {% if loop.index == 1 %}
-                                <td class="text-center">{{ coluna }}</td>
+                                <td class="text-center">{{ column }}</td>
                             {% else %}
 
                                     <td class="text-center">
-                                        <a {% if coluna.status %}
+                                        <a {% if column.status %}
                                                 class="link-light"
                                            {% else %}
                                                 class="link-danger"
                                            {% endif %}
-                                           href="{{ url_for('listar_relatorio_id', relatorio_id=coluna.id) }}">
-                                            {{ coluna.estatus }}
+                                           href="{{ url_for('get_relatory_id', relatory_id=column.id) }}">
+                                            {{ column.status }}
                                         </a>
                                     </td>
                             {% endif %}
@@ -41,7 +46,7 @@
         </table>
     </div>
     <div class="my-box-footer">
-        <span>Total de {{ sucessos }} backups realizados com sucesso e {{ falhas }} com falhas em {{ data }}.</span>
+        <span>Total de {{ success }} backups realizados com sucesso e {{ fails }} com falhas em {{ date }}.</span>
     </div>
 </div>
 

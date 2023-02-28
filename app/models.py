@@ -35,6 +35,7 @@ class Relatory(db.Model):
 
     id = db.Column(db.BigInteger, primary_key=True, autoincrement=True)
     date = db.Column(db.DateTime, nullable=False)
+    status = db.Column(db.Boolean)
     backup = db.Column(db.ForeignKey('backup.id'), nullable=False)
     log = db.Column(db.Text)
 
