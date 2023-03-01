@@ -15,6 +15,7 @@ def get_relatories():
 
 @app.route('/sincronizacao')
 @app.route('/diario')
+@app.route('/')
 def get_relatory_today():
     today = date.today()
     relatories = relatory_service.get_relatory_by_day(today)
