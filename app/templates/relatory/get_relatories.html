@@ -1,6 +1,12 @@
 {% extends 'index.html' %}
 
 {% block conteudo %}
+<br>
+<div class="text-center">
+    <a class="link-light" href="{{ url_for('get_week', week=last_week, year=last_week_year) }}"> <<-</a>
+     - Semana {{ week }} -
+    <a class="link-light" href="{{ url_for('get_week', week=next_week, year=next_week_year) }}"> ->> </a>
+</div>
 <div class="my-box my-box-primary">
     <div class="my-box-header">
         <h5 class="box-title">Semanal</h5>

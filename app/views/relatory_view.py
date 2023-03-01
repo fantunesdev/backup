@@ -30,6 +30,7 @@ def get_relatory_today():
         success=success_fails['success'],
         fails=success_fails['fails'],
         date=today.strftime('%d/%m/%Y'),
+        day=today.day,
         next_day=next_day,
         last_day=last_day
     )
@@ -54,19 +55,31 @@ def get_relatory_by_day(day):
     )
 
 
-@app.route('/semanal', defaults={'week': None})
-@app.route('/semanal/<int:week>')
-def get_week(week):
+@app.route('/semana', defaults={'year': None, 'week': None})
+@app.route('/ano/<int:year>/semana/<int:week>')
+@app.route('/semanal')
+def get_week(year, week):
     if not week:
         week = date.today().isocalendar()[1]
-    relatories = relatory_service.get_relatory_by_week(week)
+    if not year:
+        year = date.today().year
+    print(year, week)
+    relatories = relatory_service.get_relatory_by_week(year, week)
     success_fails = relatory_repository.get_success_fail_number(relatories)
+    last_week = date.fromisocalendar(year, week, 1) - timedelta(weeks=1)
+    next_week = date.fromisocalendar(year, week, 1) + timedelta(weeks=1)
+    print(last_week, next_week)
     return render_template(
         'relatory/get_relatories.html',
         relatories=relatories,
         success=success_fails['success'],
         fails=success_fails['fails'],
-        week=week
+        year=year,
+        week=week,
+        last_week=last_week.isocalendar()[1],
+        next_week=next_week.isocalendar()[1],
+        last_week_year=last_week.year,
+        next_week_year=next_week.year
     )
 
 
