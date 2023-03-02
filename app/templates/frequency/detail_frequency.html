@@ -6,8 +6,18 @@
         <h5 class="box-title">{{ backup }}</h5>
     </div>
     <div class="my-box-body">
+        {% if 'delete' in url_for(request.endpoint, frequency_id=frequency.id) %}
+        <p>Você tem certeza que deseja remover este backup?</p><br>
+        {% endif %}
         <p>ID: <strong>{{ frequency.id }}</strong></p>
         <p>Descrição: <strong>{{ frequency.description }}</strong></p>
+
+        {% if 'delete' in url_for(request.endpoint, frequency_id=frequency.id) %}
+            <form method="post">
+                <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                <button class="btn btn-danger" type="submit">Excluir</button>
+            </form>
+        {% endif %}
     </div>
     <div class="my-box-footer">
         <span></span>

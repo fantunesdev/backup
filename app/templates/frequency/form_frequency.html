@@ -1,0 +1,37 @@
+{% extends 'index.html' %}
+
+{% block conteudo %}
+<div class="my-box my-box-primary">
+    <div class="my-box-header">
+        <h5 class="box-title">
+            {% if 'create' in url_for(request.endpoint, frequency_id=1) %}
+                Cadastrar frequência
+            {% else %}
+                Editar frequência
+            {% endif %}
+        </h5>
+    </div>
+    <div class="my-box-body">
+        <form method="post">
+            {{ form_frequency.csrf_token }}
+            <div>
+                <label>Descrição:</label>
+                {{ form_frequency.description(class="form-control") }}
+                {{ form_frequency.errors.description }}
+            <br>
+            <button class="btn btn-danger" type="submit">
+                {% if 'create' in url_for(request.endpoint, frequency_id=1) %}
+                    Cadastrar
+                {% else %}
+                    Editar
+                {% endif %}
+            </button>
+        </form>
+    </div>
+    <div class="my-box-footer">
+        <span></span>
+    </div>
+</div>
+
+
+{% endblock %}

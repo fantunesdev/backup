@@ -21,7 +21,7 @@ def create_backup():
             frequency=form_backup.frequency.data,
         )
         backup_service.create_backup(new_backup)
-        return redirect(url_for('get_backups'))
+        return redirect(url_for('configure_settings'))
     return render_template('backup/form_backup.html', form_backup=form_backup)
 
 
