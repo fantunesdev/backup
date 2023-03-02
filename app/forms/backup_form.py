@@ -9,7 +9,4 @@ class BackupForm(FlaskForm):
     target = StringField('target', validators=[DataRequired()])
     program = StringField('program', validators=[DataRequired()])
     options = StringField('options')
-    frequency = SelectField('frequency', choices=[
-        (1, 'Diário'),
-        (3, 'Semanal')
-    ])
+    frequency = SelectField(u'frequency', coerce=int)

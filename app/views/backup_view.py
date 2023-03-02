@@ -5,12 +5,14 @@ from flask import render_template, redirect, url_for, request
 from app import app
 from app.forms import backup_form
 from app.models import Backup
-from app.services import backup_service
+from app.services import backup_service, frequency_service
 
 
 @app.route('/backups/create', methods=['GET', 'POST'])
 def create_backup():
+    frequencies = frequency_service.get_frequencies()
     form_backup = backup_form.BackupForm()
+    form_backup.frequency.choices = [(frequency.id, frequency.description) for frequency in frequencies]
     if form_backup.validate_on_submit():
         new_backup = Backup(
             description=form_backup.description.data,
@@ -40,7 +42,9 @@ def get_backup_id(backup_id):
 @app.route('/backups/update/<int:backup_id>', methods=['GET', 'POST'])
 def update_backup(backup_id):
     old_backup = backup_service.get_backup_id(backup_id)
+    frequencies = frequency_service.get_frequencies()
     form_backup = backup_form.BackupForm(obj=old_backup)
+    form_backup.frequency.choices = [(frequency.id, frequency.description) for frequency in frequencies]
     if form_backup.validate_on_submit():
         new_backup = Backup(
             description=form_backup.description.data,
