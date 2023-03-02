@@ -1,0 +1,58 @@
+{% extends 'index.html' %}
+
+{% block conteudo %}
+<div class="my-box my-box-primary">
+    <div class="my-box-header">
+        <h5 class="box-title">Cadastro de backup</h5>
+    </div>
+    <div class="my-box-body">
+        <form method="post">
+            {{ form_backup.csrf_token }}
+            <div>
+                <label>Descrição:</label>
+                {{ form_backup.description(class="form-control") }}
+                {{ form_backup.errors.description }}
+            </div>
+            <div>
+                <label>Fonte:</label>
+                {{ form_backup.source(class="form-control") }}
+                {{ form_backup.errors.source }}
+            </div>
+            <div>
+                <label>Destino:</label>
+                {{ form_backup.target(class="form-control") }}
+                {{ form_backup.errors.target }}
+            </div>
+            <div>
+                <label>Programa:</label>
+                {{ form_backup.program(class="form-control") }}
+                {{ form_backup.errors.program }}
+            </div>
+            <div>
+                <label>Opções:</label>
+                {{ form_backup.options(class="form-control") }}
+                {{ form_backup.errors.options }}
+            </div>
+            <div>
+                <label>Frequência:</label>
+                {{ form_backup.frequency(class="form-control") }}
+                {{ form_backup.errors.frequency }}
+            </div>
+            <br>
+            <button class="btn btn-danger" type="submit">
+                {% if url_for(request.endpoint, backup_id=backup.id) %}
+                    <form method="post">
+                        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                        <button class="btn btn-danger" type="submit">Excluir</button>
+                    </form>
+                {% endif %}
+            </button>
+        </form>
+    </div>
+    <div class="my-box-footer">
+        <span></span>
+    </div>
+</div>
+
+
+{% endblock %}

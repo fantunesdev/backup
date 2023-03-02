@@ -6,6 +6,10 @@
         <h5 class="box-title">{{ backup }}</h5>
     </div>
     <div class="my-box-body">
+        {% if 'delete' in url_for(request.endpoint, backup_id=backup.id) %}
+        <p>Você tem certeza que deseja remover este backup?</p><br>
+        {% endif %}
+
         <p>ID: <strong>{{ backup.id }}</strong></p>
         <p>Descrição: <strong>{{ backup.description }}</strong></p>
         <p>Origem: <strong>{{ backup.source }}</strong></p>
@@ -14,11 +18,15 @@
         <p>Opções: <strong>{{ backup.options }}</strong></p>
         <p>Comando: {{ backup.program }} {{ backup.options }} {{ backup.source }} {{ backup.target }}</p>
         <p>Frequência: <strong>{{ backup.frequency }}</strong></p>
+
+        {% if 'delete' in url_for(request.endpoint, backup_id=backup.id) %}
+            <form method="post">
+                <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                <button class="btn btn-danger" type="submit">Excluir</button>
+            </form>
+        {% endif %}
     </div>
     <div class="my-box-footer">
-        <span></span>
     </div>
 </div>
-
-
 {% endblock %}

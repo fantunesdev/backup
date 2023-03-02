@@ -4,10 +4,10 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-USERNAME=os.getenv('USERNAME')
-PASSWORD=os.getenv('PASSWORD')
-SERVER=os.getenv('SERVER')
-DB=os.getenv('DB')
+USERNAME = os.getenv('USERNAME')
+PASSWORD = os.getenv('PASSWORD')
+SERVER = os.getenv('SERVER')
+DB = os.getenv('DB')
 
 DEBUG = True
 
