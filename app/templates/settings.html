@@ -1,0 +1,118 @@
+{% extends 'index.html' %}
+
+{% block conteudo %}
+<div class="my-box my-box-primary">
+    <div class="my-box-header">
+        <h5 class="box-title">Backups de sincronização</h5>
+    </div>
+    <div class="my-box-body">
+        <a href="{{ url_for('create_backup') }}">
+            <button class="btn btn-danger" type="submit">Cadastrar</button>
+        </a>
+        <table class="table-dark table-striped table">
+            <thead>
+                <tr>
+                    <th class="text-center" style="min-width:50px">Descricao</th>
+                    <th class="text-center" style="min-width:50px">Frequência</th>
+                    <th class="text-center">Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for backup in backups %}
+                    {% if backup.frequency == 1 %}
+                    <tr>
+                        <td class="text-center">
+                            <a class="link-light" href="{{ url_for('get_backup_id', backup_id=backup.id) }}">{{ backup.description }}</a>
+                        </td>
+                        <td class="text-center">
+                            {{ backup.frequency_obj }}
+                        </td>
+                        <td class="text-center">
+                            <a class="link-light" href="{{ url_for('update_backup', backup_id=backup.id) }}">Editar</a>
+                            <a class="link-light" href="{{ url_for('delete_backup', backup_id=backup.id) }}">Excluir</a>
+                        </td>
+                    </tr>
+                    {% endif %}
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <div class="my-box-footer">
+        <span></span>
+    </div>
+</div>
+<div class="my-box my-box-primary">
+    <div class="my-box-header">
+        <h5 class="box-title">Backups semanais</h5>
+    </div>
+    <div class="my-box-body">
+        <a href="{{ url_for('create_backup') }}">
+            <button class="btn btn-danger" type="submit">Cadastrar</button>
+        </a>
+        <table class="table-dark table-striped table">
+            <thead>
+                <tr>
+                    <th class="text-center" style="min-width:50px">Descricao</th>
+                    <th class="text-center" style="min-width:50px">Frequência</th>
+                    <th class="text-center">Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for backup in backups %}
+                    {% if backup.frequency == 3 %}
+                    <tr>
+                        <td class="text-center">
+                            <a class="link-light" href="{{ url_for('get_backup_id', backup_id=backup.id) }}">{{ backup.description }}</a>
+                        </td>
+                        <td class="text-center">
+                            {{ backup.frequency_obj }}
+                        </td>
+                        <td class="text-center">
+                            <a class="link-light" href="{{ url_for('update_backup', backup_id=backup.id) }}">Editar</a>
+                            <a class="link-light" href="{{ url_for('delete_backup', backup_id=backup.id) }}">Excluir</a>
+                        </td>
+                    </tr>
+                    {% endif %}
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <div class="my-box-footer">
+        <span></span>
+    </div>
+</div>
+<div class="my-box my-box-primary">
+    <div class="my-box-header">
+        <h5 class="box-title">Frequências</h5>
+    </div>
+    <div class="my-box-body">
+        <a href="{{ url_for('create_frequency') }}">
+            <button class="btn btn-danger" type="submit">Cadastrar</button>
+        </a>
+        <table class="table-dark table-striped table">
+            <thead>
+                <tr>
+                    <th class="text-center" style="min-width:50px">Descricao</th>
+                    <th class="text-center">Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for frequency in frequencies %}
+                    <tr>
+                        <td class="text-center">
+                            <a class="link-light" href="{{ url_for('get_frequency_id', frequency_id=frequency.id) }}">{{ frequency.description }}</a>
+                        </td>
+                        <td class="text-center">
+                            <a class="link-light" href="{{ url_for('update_frequency', frequency_id=frequency.id) }}">Editar</a>
+                            <a class="link-light" href="{{ url_for('delete_frequency', frequency_id=frequency.id) }}">Excluir</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <div class="my-box-footer">
+        <span></span>
+    </div>
+</div>
+{% endblock %}

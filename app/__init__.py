@@ -11,3 +11,4 @@ csrf.init_app(app)
 from .views import backup_view
 from .views import frequency_view
 from .views import relatory_view
+from .views import settings_view

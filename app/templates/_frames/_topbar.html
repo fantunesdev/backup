@@ -19,15 +19,15 @@
                 <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="{{ url_for('get_week') }}">Semanal</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="{{ url_for('get_backups') }}">Backups</a>
-                </li>
             </ul>
 
             <!-- Início do botão de perfil -->
 <!--            {% include '_frames/_perfil.html' %}-->
             <!-- Fim do botão de perfil -->
         </div>
+    </div>
+    <div>
+        <a class="nav-link active link-light" aria-current="page" href="{{ url_for('configure_settings') }}">Settings</a>
     </div>
     <!-- Fim do Menu -->
 </nav>

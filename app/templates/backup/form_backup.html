@@ -3,7 +3,13 @@
 {% block conteudo %}
 <div class="my-box my-box-primary">
     <div class="my-box-header">
-        <h5 class="box-title">Cadastro de backup</h5>
+        <h5 class="box-title">
+            {% if 'create' in url_for(request.endpoint, backup_id=1) %}
+                Cadastrar backup
+            {% else %}
+                Editar backup
+            {% endif %}
+        </h5>
     </div>
     <div class="my-box-body">
         <form method="post">
@@ -40,11 +46,10 @@
             </div>
             <br>
             <button class="btn btn-danger" type="submit">
-                {% if url_for(request.endpoint, backup_id=backup.id) %}
-                    <form method="post">
-                        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
-                        <button class="btn btn-danger" type="submit">Excluir</button>
-                    </form>
+                {% if 'create' in url_for(request.endpoint, backup_id=1) %}
+                    Cadastrar
+                {% else %}
+                    Editar
                 {% endif %}
             </button>
         </form>
