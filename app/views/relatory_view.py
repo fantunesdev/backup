@@ -32,7 +32,8 @@ def get_relatory_today():
         date=today.strftime('%d/%m/%Y'),
         day=today.day,
         next_day=next_day,
-        last_day=last_day
+        last_day=last_day,
+        actual=date.today()
     )
 
 
@@ -51,7 +52,8 @@ def get_relatory_by_day(day):
         fails=success_fails['fails'],
         date=day,
         next_day=next_day,
-        last_day=last_day
+        last_day=last_day,
+        actual=datetime.strptime(day, '%Y-%m-%d').date()
     )
 
 
