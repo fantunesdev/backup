@@ -10,6 +10,16 @@
         <p>Data: <strong>{{ relatory.date }}</strong></p>
         <p>Status: <strong>{{ relatory.status }}</strong></p>
         <p>Backup: <strong>{{ relatory.backup_obj }}</strong></p>
+        <p>Fonte: <strong>{{ relatory.backup_obj.source }}</strong></p>
+        <p>Destino: <strong>{{ relatory.backup_obj.target }}</strong></p>
+        <p>Comando:
+            <strong>
+                {{ relatory.backup_obj.program }}
+                {{ relatory.backup_obj.options }}
+                {{ relatory.backup_obj.source }}
+                {{ relatory.backup_obj.target }}
+            </strong>
+        </p>
         <p>Log: </p>
         <p>{{ relatory.log }}</p>
     </div>
