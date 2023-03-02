@@ -51,7 +51,7 @@ def update_backup(backup_id):
             frequency=form_backup.frequency.data,
         )
         backup_service.update_backup(old_backup, new_backup)
-        return redirect(url_for('get_backups'))
+        return redirect(url_for('configure_settings'))
 
     return render_template('backup/form_backup.html', form_backup=form_backup)
 
@@ -61,5 +61,5 @@ def delete_backup(backup_id):
     backup = backup_service.get_backup_id(backup_id)
     if request.method == 'POST':
         backup_service.delete_backup(backup)
-        return redirect(url_for('get_backups'))
+        return redirect(url_for('configure_settings'))
     return render_template('backup/detail_backup.html', backup=backup)
