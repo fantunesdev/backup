@@ -28,8 +28,8 @@
                             {{ backup.frequency_obj }}
                         </td>
                         <td class="text-center">
-                            <a class="link-light" href="{{ url_for('update_backup', backup_id=backup.id) }}">Editar</a>
-                            <a class="link-light" href="{{ url_for('delete_backup', backup_id=backup.id) }}">Excluir</a>
+                            <a class="link-light" href="{{ url_for('update_backup', backup_id=backup.id) }}"><i class="fa-solid fa-pen-to-square action-icon"></i></a>
+                            <a class="link-light ml-1" href="{{ url_for('delete_backup', backup_id=backup.id) }}"><i class="fa-solid fa-trash action-icon ml-1"></i></a>
                         </td>
                     </tr>
                     {% endif %}
@@ -68,8 +68,8 @@
                             {{ backup.frequency_obj }}
                         </td>
                         <td class="text-center">
-                            <a class="link-light" href="{{ url_for('update_backup', backup_id=backup.id) }}">Editar</a>
-                            <a class="link-light" href="{{ url_for('delete_backup', backup_id=backup.id) }}">Excluir</a>
+                            <a class="link-light" href="{{ url_for('update_backup', backup_id=backup.id) }}"><i class="fa-solid fa-pen-to-square action-icon"></i></a>
+                            <a class="link-light" href="{{ url_for('delete_backup', backup_id=backup.id) }}"><i class="fa-solid fa-trash action-icon ml-1"></i></a>
                         </td>
                     </tr>
                     {% endif %}
@@ -103,8 +103,8 @@
                             <a class="link-light" href="{{ url_for('get_frequency_id', frequency_id=frequency.id) }}">{{ frequency.description }}</a>
                         </td>
                         <td class="text-center">
-                            <a class="link-light" href="{{ url_for('update_frequency', frequency_id=frequency.id) }}">Editar</a>
-                            <a class="link-light" href="{{ url_for('delete_frequency', frequency_id=frequency.id) }}">Excluir</a>
+                            <a class="link-light" href="{{ url_for('update_frequency', frequency_id=frequency.id) }}"><i class="fa-solid fa-pen-to-square action-icon"></i></a>
+                            <a class="link-light" href="{{ url_for('delete_frequency', frequency_id=frequency.id) }}"><i class="fa-solid fa-trash action-icon ml-1"></i></a>
                         </td>
                     </tr>
                 {% endfor %}
