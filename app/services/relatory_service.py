@@ -14,6 +14,7 @@ def get_relatory_by_day(day):
         .filter(cast(Relatory.date, Date) == day) \
         .join(Relatory.backup_obj) \
         .filter_by(frequency=1) \
+        .order_by(Relatory.id) \
         .all()
 
 
@@ -25,6 +26,7 @@ def get_relatory_by_week(year, week):
         ) \
         .join(Relatory.backup_obj) \
         .filter_by(frequency=3) \
+        .order_by(Relatory.id) \
         .all()
 
 

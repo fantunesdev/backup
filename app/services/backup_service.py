@@ -8,7 +8,7 @@ def create_backup(new_backup):
 
 
 def get_backups():
-    return Backup.query.all()
+    return Backup.query.order_by(Backup.id).all()
 
 
 def get_backup_id(backup_id):
