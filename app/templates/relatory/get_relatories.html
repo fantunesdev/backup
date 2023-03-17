@@ -35,7 +35,7 @@
                                href="{{ url_for('get_relatory_id', relatory_id=relatory.id) }}">{{ relatory.status }}</a>
                         </td>
                         <td class="text-center">
-                                <a class="link-light" href="{{ url_for('get_relatory_id', relatory_id=relatory.id) }}">{{ relatory.date }}</a>
+                                <a class="link-light" href="{{ url_for('get_relatory_id', relatory_id=relatory.id) }}">{{ relatory.date.strftime('%d/%m/%Y - %H:%M:%S') }}</a>
                         </td>
                     </tr>
                 {% endfor %}

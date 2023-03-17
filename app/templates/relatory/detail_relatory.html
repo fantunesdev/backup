@@ -7,7 +7,7 @@
     </div>
     <div class="my-box-body">
         <p>ID: <strong>{{ relatory.id }}</strong></p>
-        <p>Data: <strong>{{ relatory.date }}</strong></p>
+        <p>Data: <strong>{{ relatory.date.strftime('%d/%m/%Y - %H:%M:%S') }}</strong></p>
         <p>Status: <strong>{{ relatory.status }}</strong></p>
         <p>Backup: <strong>{{ relatory.backup_obj }}</strong></p>
         <p>Fonte: <strong>{{ relatory.backup_obj.source }}</strong></p>
